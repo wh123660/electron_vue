@@ -1,4 +1,7 @@
-# testvue
+# electron_vue项目
+## 内部vue为vue create App命令创建的
+---
+
 
 ## 项目中所用到的库的安装
 ```
