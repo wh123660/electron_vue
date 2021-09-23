@@ -1,24 +1,76 @@
 # testvue
 
-## Project setup
+## 项目中所用到的库的安装
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### 开发环境运行命令
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
+### 项目打包到dist文件夹里面
 ```
 yarn build
 ```
 
-### Lints and fixes files
+### 打包完dist之后试运行桌面App
 ```
-yarn lint
+yarn buildexe
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 打包成exe文件 windows使用
+```
+yarn builder
+```
+
+### 输出配置pakcage.json:
+```
+  "build": {
+    "directories": {
+      "output": "build/out/",
+      "buildResources": "/dist/*"
+    },
+  }
+  根目录里面会找到这个文件夹build/out/
+```
+
+
+### 配置升级路径
+```
+  "build": {
+    "win": {
+      "publish": {
+        "provider": "generic",
+        "url": "http://****.***/***/"
+      }
+    }
+  }
+  升级配置完生成文件之后把生成好的两个文件放到服务器对应的位置上
+  必须是这两个文件：
+  latest.yml
+  testvue Setup 0.1.0.exe
+  如果后面需要升级，只需要把package.json里面的版本号改下重新打包上传就可以了
+  
+```
+
+### 
+```
+
+```
+
+### 
+```
+
+```
+
+### 
+```
+
+```
+
+### 
+```
+
+```

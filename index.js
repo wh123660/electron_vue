@@ -42,14 +42,6 @@ const { autoUpdater } = require('electron-updater')
 ipcMain.on('message',(e,a)=>{
   console.log(e,a)
 })
-// autoUpdater.setFeedURL('http://ttnjs.wang/pcApp/')
-// autoUpdater.on('update-downloaded', () => {
-//   autoUpdater.quitAndInstall()
-// })
-// autoUpdater.checkForUpdates()
-// app.on('ready', () => {
-//   if (process.env.NODE_ENV === 'production') autoUpdater.checkForUpdates()
-// })
 
 
 
@@ -60,10 +52,15 @@ function handleUpdate() {
       updateAva: {status: 1, msg: '检测到新版本，正在下载,请稍后'},
       updateNotAva: {status: -1, msg: '您现在使用的版本为最新版本,无需更新!'},
   };
+  
 
-  // autoUpdater.logger = electronLog
-  // electronLog.transports.file.level = "info"
   //和之前package.json配置的一样
+  // "win": {
+  //   "publish": {
+  //     "provider": "generic",
+  //     "url": "http://ttnjs.wang/pcApp/"
+  //   }
+  // }
   autoUpdater.setFeedURL('http://ttnjs.wang/pcApp/')
 
   //更新错误
@@ -99,8 +96,8 @@ function handleUpdate() {
     
       sendUpdateMessage('download success!')
       // ipcMain.on('isUpdateNow', (e, arg) => {
-      //     //some code here to handle event
-          // autoUpdater.quitAndInstall();
+          // some code here to handle event
+          autoUpdater.quitAndInstall();
       // });
       
       // mainWindow.webContents.send('isUpdateNow')
@@ -110,8 +107,10 @@ function handleUpdate() {
   autoUpdater.checkForUpdates();
 }
 function sendUpdateMessage(text) {
-  dialog.showMessageBox({
-    message :text
-  })
-  // mainWindow.webContents.send('message', text)
+  // 类似alert的弹窗
+  // dialog.showMessageBox({
+  //   message :text
+  // })
+  console.log('------------------------')
+  console.log(text)
 }
